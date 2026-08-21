@@ -1,0 +1,6 @@
+{
+  "name": "Snappy - Windows轻量效率工具内测发布页",
+  "description": "专为Windows打造的本地优先、零上传轻量效率工具内测发布页与产品设计方案。",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
