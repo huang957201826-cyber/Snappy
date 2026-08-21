@@ -1,10 +1,8 @@
 import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vitest/config';
 
-const pagesBase = process.env.VITE_BASE_PATH ?? '/';
-
 export default defineConfig({
-  base: pagesBase,
+  base: '/Snappy/',
   plugins: [react()],
   clearScreen: false,
   server: {
