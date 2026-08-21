@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Download, ShieldCheck, Check, Copy, Laptop, FileArchive, ArrowDownCircle } from 'lucide-react';
+import { Download, ShieldCheck, Check, Copy, Laptop, FileArchive } from 'lucide-react';
 import { SnappyLogo } from './SnappyLogo';
 import { DownloadVersion } from '../types';
 import { DOWNLOAD_VERSIONS } from '../data/mockData';
@@ -29,7 +29,7 @@ export const HeroDownloadSection: React.FC<HeroDownloadSectionProps> = ({ onTrig
 
         <div className="flex items-center justify-center gap-2 mb-3.5">
           <span className="px-3.5 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold border border-blue-200">
-            Windows 内测体验版 v0.8.2
+            Windows v0.1.1 Closed Pilot
           </span>
         </div>
 
@@ -37,7 +37,7 @@ export const HeroDownloadSection: React.FC<HeroDownloadSectionProps> = ({ onTrig
           Snappy · Windows 轻量效率工具
         </h1>
         <p className="text-base sm:text-lg text-slate-600 font-medium leading-relaxed">
-          极速、圆润、纯本地。毫秒唤出剪贴板历史、AI 润色翻译、截图识字与灵感待办。
+          轻量、本地优先。快速访问剪贴板历史、AI 润色翻译、截图识字与灵感待办。
         </p>
       </div>
 
@@ -49,7 +49,7 @@ export const HeroDownloadSection: React.FC<HeroDownloadSectionProps> = ({ onTrig
           </div>
           <div>
             <strong className="text-emerald-900 font-bold mr-1">隐私承诺：</strong>
-            剪贴板、截屏与文字记录 <span className="font-bold underline decoration-emerald-500 underline-offset-2">100% 存储于本地电脑</span>，0 上传云端，离线可用。
+            剪贴板、截图与笔记默认保存在本地；只有你主动执行 AI 请求时，所选文字才会按配置发送。
           </div>
         </div>
         <span className="px-3 py-1 rounded-full bg-white border border-emerald-300 text-emerald-800 text-xs font-bold shrink-0">
@@ -107,8 +107,9 @@ export const HeroDownloadSection: React.FC<HeroDownloadSectionProps> = ({ onTrig
 
               <div>
                 {/* Big, Rounded, Friendly Download Button */}
-                <button
-                  onClick={() => onTriggerDownload(v)}
+                <a
+                  href={v.downloadUrl}
+                  download={v.fileName}
                   className={`w-full py-4 px-6 rounded-full text-sm sm:text-base font-black flex items-center justify-center gap-2.5 transition-all duration-200 cursor-pointer shadow-md hover:scale-[1.02] active:scale-95 ${
                     isRec 
                       ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-blue-500/25' 
@@ -117,7 +118,7 @@ export const HeroDownloadSection: React.FC<HeroDownloadSectionProps> = ({ onTrig
                 >
                   <Download className="w-5 h-5" />
                   <span>下载 {v.name}</span>
-                </button>
+                </a>
 
                 {/* Hash verification */}
                 <div className="mt-3 flex items-center justify-between text-xs text-slate-400">
@@ -156,7 +157,7 @@ export const HeroDownloadSection: React.FC<HeroDownloadSectionProps> = ({ onTrig
             <span className="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">2</span>
             <div>
               <strong className="text-slate-900 block font-bold mb-0.5">托盘待机</strong>
-              <span className="text-xs text-slate-500">常驻系统托盘，内存占用 &lt; 28MB。</span>
+              <span className="text-xs text-slate-500">启动后常驻系统托盘，需要时快速唤出。</span>
             </div>
           </div>
 
@@ -164,7 +165,7 @@ export const HeroDownloadSection: React.FC<HeroDownloadSectionProps> = ({ onTrig
             <span className="w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-xs shrink-0 mt-0.5">3</span>
             <div>
               <strong className="text-slate-900 block font-bold mb-0.5">快捷键呼出</strong>
-              <span className="text-xs text-slate-500">按 <kbd className="px-1.5 py-0.5 rounded-md bg-white border border-slate-300 font-mono text-xs font-bold text-slate-800">Alt + V</kbd> 随时唤出。</span>
+              <span className="text-xs text-slate-500">按 <kbd className="px-1.5 py-0.5 rounded-md bg-white border border-slate-300 font-mono text-xs font-bold text-slate-800">Alt + Space</kbd> 随时唤出。</span>
             </div>
           </div>
         </div>

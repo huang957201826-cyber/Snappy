@@ -8,4 +8,5 @@ export interface DownloadVersion {
   recommended: boolean;
   sha256: string;
   fileName: string;
+  downloadUrl: string;
 }

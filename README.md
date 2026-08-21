@@ -1,20 +1,25 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Snappy v0.1.1
 
-# Run and deploy your AI Studio app
+Snappy 是一个面向 Windows 的轻量效率工具，提供剪贴板历史、截图、笔记和 AI 辅助功能。
 
-This contains everything you need to run your app locally.
+## 下载
 
-View your app in AI Studio: https://ai.studio/apps/51e7f661-8e25-4988-abad-578aead04b20
+官网页面提供 v0.1.1 Closed Pilot 的真实 GitHub Release 资产：
 
-## Run Locally
+- `Snappy-0.1.1-Setup.exe`
+- `Snappy-0.1.1-Portable.zip`
 
-**Prerequisites:**  Node.js
+发布地址：
 
+https://github.com/huang957201826-cyber/Snappy/releases/tag/v0.1.1
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+SHA-256 校验值来自发布清单，发布资产变更后必须重新核对。
+
+## 本地构建官网
+
+```powershell
+npm install
+npm run build
+```
+
+GitHub Pages 使用 `/Snappy/` 子路径部署。
