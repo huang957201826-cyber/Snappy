@@ -33,6 +33,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      # The site config imports vitest/config; keep this CI-only so the
+      # repository remains lockfile-free and the deployment scope stays narrow.
+      - name: Install Vite config runtime
+        run: npm install --no-save --no-package-lock vitest
+
       - name: Build
         run: npm run build
 
