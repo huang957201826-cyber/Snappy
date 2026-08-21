@@ -38,6 +38,16 @@ jobs:
       - name: Install Vite config runtime
         run: npm install --no-save --no-package-lock vitest
 
+      # The shared Vite config declares desktop entrypoints that are not part
+      # of this Pages site. Create CI-only copies so the site build stays
+      # deployment-scoped without adding or changing product pages.
+      - name: Prepare Pages entrypoints
+        shell: bash
+        run: |
+          for page in overlay float notes tooltip; do
+            cp index.html "${page}.html"
+          done
+
       - name: Build
         run: npm run build
 
