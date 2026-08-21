@@ -1,22 +1,33 @@
-import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
-import path from 'path';
-import {defineConfig} from 'vite';
+import { defineConfig } from 'vitest/config';
 
-export default defineConfig(() => {
-  return {
-    plugins: [react(), tailwindcss()],
-    resolve: {
-      alias: {
-        '@': path.resolve(__dirname, '.'),
+const pagesBase = process.env.VITE_BASE_PATH ?? '/';
+
+export default defineConfig({
+  base: pagesBase,
+  plugins: [react()],
+  clearScreen: false,
+  server: {
+    strictPort: true,
+  },
+  envPrefix: ['VITE_', 'TAURI_'],
+  build: {
+    target: 'es2022',
+    sourcemap: false,
+    rollupOptions: {
+      input: {
+        index: 'index.html',
+        overlay: 'overlay.html',
+        float: 'float.html',
+        notes: 'notes.html',
+        tooltip: 'tooltip.html',
       },
     },
-    server: {
-      // HMR is disabled in AI Studio via DISABLE_HMR env var.
-      // Do not modifyâfile watching is disabled to prevent flickering during agent edits.
-      hmr: process.env.DISABLE_HMR !== 'true',
-      // Disable file watching when DISABLE_HMR is true to save CPU during agent edits.
-      watch: process.env.DISABLE_HMR === 'true' ? null : {},
-    },
-  };
+  },
+  test: {
+    environment: 'jsdom',
+    setupFiles: ['./tests/setup.ts'],
+    css: true,
+    exclude: ['**/node_modules/**', '**/dist/**', 'account-mvp/tests/**'],
+  },
 });
