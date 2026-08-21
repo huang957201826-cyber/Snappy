@@ -41,6 +41,7 @@ jobs:
           grep -Rq '/Snappy/screenshots/clipboard.png' dist/assets/*.js
           for image in clipboard translate screenshot notes; do
             test -f "dist/screenshots/${image}.png"
+            file "dist/screenshots/${image}.png" | grep -Fq 'PNG image data'
           done
 
       - name: Add SPA fallback
