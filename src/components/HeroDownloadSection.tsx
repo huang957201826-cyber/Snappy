@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Download, ShieldCheck, Check, Copy, Laptop, FileArchive } from 'lucide-react';
+import { Download, ShieldCheck, Check, Copy, Laptop, FileArchive, QrCode } from 'lucide-react';
 import { SnappyLogo } from './SnappyLogo';
 import { DownloadVersion } from '../types';
 import { DOWNLOAD_VERSIONS } from '../data/mockData';
@@ -17,6 +17,8 @@ export const HeroDownloadSection: React.FC<HeroDownloadSectionProps> = ({ onTrig
     setCopiedShaId(id);
     setTimeout(() => setCopiedShaId(null), 2000);
   };
+
+  const groupQrUrl = `${import.meta.env.BASE_URL}wechat-group-qr.png`;
 
   return (
     <section id="download" className="pt-10 pb-12 sm:pt-14 sm:pb-16 max-w-5xl mx-auto px-4 sm:px-6">
@@ -137,6 +139,28 @@ export const HeroDownloadSection: React.FC<HeroDownloadSectionProps> = ({ onTrig
             </div>
           );
         })}
+      </div>
+
+      {/* WeChat Group Invite */}
+      <div id="wechat-group" className="mb-12 p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm">
+        <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr] items-center gap-6 sm:gap-8 max-w-3xl mx-auto text-center sm:text-left">
+          <div className="mx-auto">
+            <img
+              src={groupQrUrl}
+              alt="Snappy 内测交流群二维码"
+              className="w-44 h-44 object-contain rounded-2xl border border-slate-200 bg-white p-2"
+            />
+          </div>
+          <div>
+            <div className="inline-flex items-center gap-2 text-xs font-bold text-emerald-700 bg-emerald-50 border border-emerald-200 rounded-full px-3 py-1 mb-3">
+              <QrCode className="w-4 h-4" />
+              内测交流群
+            </div>
+            <h4 className="text-2xl font-black text-slate-900 mb-2">扫码加入 Snappy 内测交流群</h4>
+            <p className="text-sm text-slate-600 leading-relaxed mb-3">下载使用中遇到问题、想反馈建议，都可以扫码进群直接留言。</p>
+            <p className="text-xs text-slate-400">群二维码有效期为 7 天，请及时扫码加入。</p>
+          </div>
+        </div>
       </div>
 
       {/* 3 Simple Rounded Steps */}
