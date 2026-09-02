@@ -34,7 +34,7 @@ export const DOWNLOAD_VERSIONS: DownloadVersion[] = [
     format: '.zip（解压即用便携包）',
     description: '无需安装，解压后即可运行；用户数据仍保存在 Snappy 本地数据目录，适合临时体验或受控设备。',
     recommended: false,
-    sha256: '75A88E0C58A931A8E56513B4AB708DA93B1AA281A40D59102F472DC0585ECAEC',
+    sha256: '75FF36272D5CB1B254459B4FFE1E2225ECD76231E047CC253E8796171F51CE70',
     fileName: 'Snappy-0.2.0-Portable.zip',
     downloadUrl: `${DOWNLOAD_BASE_URL}/Snappy-0.2.0-Portable.zip`,
   },
