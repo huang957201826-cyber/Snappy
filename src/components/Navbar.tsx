@@ -10,14 +10,14 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDownload }) => {
   return (
     <header className="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-md border-b border-slate-100 text-slate-800 shadow-xs">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
-        
+
         {/* Brand Logo & Name */}
         <a href="#" className="flex items-center gap-3 group">
           <SnappyLogo size={36} className="transition-transform group-hover:scale-105 duration-200" />
           <div className="flex items-center gap-2">
             <span className="text-xl font-black tracking-tight text-slate-900">Snappy</span>
             <span className="px-2.5 py-0.5 text-[11px] font-bold rounded-full bg-blue-50 text-blue-700 border border-blue-200">
-              内测版
+              v0.2.0
             </span>
           </div>
         </a>

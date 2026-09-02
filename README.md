@@ -1,25 +1,25 @@
-# Snappy v0.1.1
+# Snappy v0.2.0 Release Page
 
-Snappy 是一个面向 Windows 的轻量效率工具，提供剪贴板历史、截图、笔记和 AI 辅助功能。
+这是 Snappy v0.2.0 Windows 下载页面源码。
 
-## 下载
-
-官网页面提供 v0.1.1 Closed Pilot 的真实 GitHub Release 资产：
-
-- `Snappy-0.1.1-Setup.exe`
-- `Snappy-0.1.1-Portable.zip`
-
-发布地址：
-
-https://github.com/huang957201826-cyber/Snappy/releases/tag/v0.1.1
-
-SHA-256 校验值来自发布清单，发布资产变更后必须重新核对。
-
-## 本地构建官网
+## 本地构建
 
 ```powershell
-npm install
+npm install --no-package-lock
 npm run build
 ```
 
-GitHub Pages 使用 `/Snappy/` 子路径部署。
+构建输出为 `dist/`。GitHub Pages 使用 `/Snappy/` 子路径部署。
+
+## 下载地址
+
+页面中的两个下载按钮指向 GitHub Releases v0.2.0 资产：
+
+- `https://github.com/huang957201826-cyber/Snappy/releases/download/v0.2.0/Snappy-0.2.0-Setup.exe`
+- `https://github.com/huang957201826-cyber/Snappy/releases/download/v0.2.0/Snappy-0.2.0-Portable.zip`
+
+SHA256 来自本次构建的 canonical artifact manifest；下载后请与页面显示值核对。
+
+## 隐私
+
+此页面不读取或上传 Snappy 用户本地内容，也不需要 API key、服务器或账号密码。

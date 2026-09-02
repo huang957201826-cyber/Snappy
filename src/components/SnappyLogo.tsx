@@ -7,11 +7,11 @@ interface SnappyLogoProps {
 
 export const SnappyLogo: React.FC<SnappyLogoProps> = ({ size = 36, className = '' }) => {
   return (
-    <svg 
-      width={size} 
-      height={size} 
-      viewBox="0 0 512 512" 
-      fill="none" 
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 512 512"
+      fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={`shrink-0 ${className}`}
     >
@@ -27,7 +27,7 @@ export const SnappyLogo: React.FC<SnappyLogoProps> = ({ size = 36, className = '
         <filter id="paper-shadow" x="-10%" y="-10%" width="130%" height="130%">
           <feDropShadow dx="0" dy="12" stdDeviation="16" floodColor="#1e3a8a" floodOpacity="0.22" />
         </filter>
-        
+
         <filter id="card-shadow" x="-10%" y="-10%" width="130%" height="130%">
           <feDropShadow dx="0" dy="6" stdDeviation="8" floodColor="#1e3a8a" floodOpacity="0.16" />
         </filter>
@@ -39,48 +39,48 @@ export const SnappyLogo: React.FC<SnappyLogoProps> = ({ size = 36, className = '
       {/* Group of Stacked Clipboard Sheets */}
       <g filter="url(#paper-shadow)">
         {/* Bottom / Leftmost rotated sheet */}
-        <rect 
-          x="100" 
-          y="180" 
-          width="190" 
-          height="240" 
-          rx="32" 
-          fill="#FFFFFF" 
-          fillOpacity="0.75" 
-          transform="rotate(-16 100 180)" 
+        <rect
+          x="100"
+          y="180"
+          width="190"
+          height="240"
+          rx="32"
+          fill="#FFFFFF"
+          fillOpacity="0.75"
+          transform="rotate(-16 100 180)"
         />
 
         {/* Middle sheet */}
-        <rect 
-          x="132" 
-          y="136" 
-          width="200" 
-          height="250" 
-          rx="32" 
-          fill="#FFFFFF" 
-          fillOpacity="0.88" 
-          transform="rotate(-8 132 136)" 
+        <rect
+          x="132"
+          y="136"
+          width="200"
+          height="250"
+          rx="32"
+          fill="#FFFFFF"
+          fillOpacity="0.88"
+          transform="rotate(-8 132 136)"
         />
 
         {/* Top / Main Clipboard sheet */}
         <g filter="url(#card-shadow)">
-          <rect 
-            x="184" 
-            y="96" 
-            width="220" 
-            height="256" 
-            rx="36" 
-            fill="#FFFFFF" 
+          <rect
+            x="184"
+            y="96"
+            width="220"
+            height="256"
+            rx="36"
+            fill="#FFFFFF"
           />
 
           {/* Top Clipboard Clip */}
-          <rect 
-            x="254" 
-            y="80" 
-            width="80" 
-            height="50" 
-            rx="14" 
-            fill="#FFFFFF" 
+          <rect
+            x="254"
+            y="80"
+            width="80"
+            height="50"
+            rx="14"
+            fill="#FFFFFF"
             stroke="#E2E8F0"
             strokeWidth="3"
           />

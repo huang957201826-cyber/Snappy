@@ -1,14 +1,9 @@
 import React, { useState } from 'react';
 import { Download, ShieldCheck, Check, Copy, Laptop, FileArchive, QrCode } from 'lucide-react';
 import { SnappyLogo } from './SnappyLogo';
-import { DownloadVersion } from '../types';
-import { DOWNLOAD_VERSIONS } from '../data/mockData';
+import { DOWNLOAD_VERSIONS } from '../data/releaseData';
 
-interface HeroDownloadSectionProps {
-  onTriggerDownload: (version: DownloadVersion) => void;
-}
-
-export const HeroDownloadSection: React.FC<HeroDownloadSectionProps> = ({ onTriggerDownload }) => {
+export const HeroDownloadSection: React.FC = () => {
   const [copiedShaId, setCopiedShaId] = useState<string | null>(null);
 
   const handleCopySha = (id: string, sha: string, e: React.MouseEvent) => {
@@ -22,7 +17,7 @@ export const HeroDownloadSection: React.FC<HeroDownloadSectionProps> = ({ onTrig
 
   return (
     <section id="download" className="pt-10 pb-12 sm:pt-14 sm:pb-16 max-w-5xl mx-auto px-4 sm:px-6">
-      
+
       {/* Brand Header */}
       <div className="text-center max-w-2xl mx-auto mb-10">
         <div className="inline-flex items-center justify-center mb-5 p-3 bg-white rounded-3xl shadow-md border border-slate-100 transition-transform hover:scale-105 duration-300">
@@ -31,7 +26,7 @@ export const HeroDownloadSection: React.FC<HeroDownloadSectionProps> = ({ onTrig
 
         <div className="flex items-center justify-center gap-2 mb-3.5">
           <span className="px-3.5 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold border border-blue-200">
-            Windows v0.1.1 Closed Pilot
+            Windows v0.2.0 正式版
           </span>
         </div>
 
@@ -55,7 +50,7 @@ export const HeroDownloadSection: React.FC<HeroDownloadSectionProps> = ({ onTrig
           </div>
         </div>
         <span className="px-3 py-1 rounded-full bg-white border border-emerald-300 text-emerald-800 text-xs font-bold shrink-0">
-          100% 本地优先
+          本地优先
         </span>
       </div>
 
@@ -64,11 +59,11 @@ export const HeroDownloadSection: React.FC<HeroDownloadSectionProps> = ({ onTrig
         {DOWNLOAD_VERSIONS.map((v) => {
           const isRec = v.recommended;
           return (
-            <div 
+            <div
               key={v.id}
               className={`rounded-3xl p-6 sm:p-8 border transition-all duration-300 flex flex-col justify-between hover:shadow-xl ${
-                isRec 
-                  ? 'bg-white border-blue-300 ring-4 ring-blue-500/10 shadow-lg shadow-blue-500/5' 
+                isRec
+                  ? 'bg-white border-blue-300 ring-4 ring-blue-500/10 shadow-lg shadow-blue-500/5'
                   : 'bg-white border-slate-200 shadow-sm hover:border-slate-300'
               }`}
             >
@@ -112,9 +107,10 @@ export const HeroDownloadSection: React.FC<HeroDownloadSectionProps> = ({ onTrig
                 <a
                   href={v.downloadUrl}
                   download={v.fileName}
+                  aria-label={`下载 ${v.name}`}
                   className={`w-full py-4 px-6 rounded-full text-sm sm:text-base font-black flex items-center justify-center gap-2.5 transition-all duration-200 cursor-pointer shadow-md hover:scale-[1.02] active:scale-95 ${
-                    isRec 
-                      ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-blue-500/25' 
+                    isRec
+                      ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-blue-500/25'
                       : 'bg-slate-900 hover:bg-slate-800 text-white shadow-slate-900/15'
                   }`}
                 >

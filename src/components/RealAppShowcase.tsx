@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { 
-  ClipboardList, 
-  Languages, 
-  Crop, 
-  CheckSquare, 
+import {
+  ClipboardList,
+  Languages,
+  Crop,
+  CheckSquare,
   Maximize2,
   X,
   ShieldCheck,
@@ -18,7 +18,7 @@ import { SnappyLogo } from './SnappyLogo';
 interface FeatureCardData {
   id: string;
   name: string;
-  shortcut: string;
+      shortcut: string;
   tagline: string;
   badge: string;
   imageSrc: string;
@@ -37,60 +37,60 @@ export const RealAppShowcase: React.FC = () => {
     {
       id: 'clipboard',
       name: '智能剪贴板',
-      shortcut: 'Alt + V',
+      shortcut: 'Alt + Space',
       tagline: '毫秒唤出历史，拼音快搜与置顶',
-      badge: '400+ 记录',
-      imageSrc: `${import.meta.env.BASE_URL}screenshots/clipboard.png`,
+      badge: '本地历史',
+      imageSrc: '/screenshots/clipboard.png',
       color: 'border-blue-400 ring-blue-500/15',
       accentBg: 'bg-blue-50 text-blue-700 border-blue-200',
       icon: ClipboardList,
-      highlights: ['400+ 本地历史', '拼音模糊速搜', '常用信息置顶'],
+      highlights: ['本地历史记录', '拼音模糊速搜', '常用信息置顶'],
       description: '后台无感记录复制内容，支持文本、链接与截图，秒开秒贴。'
     },
     {
       id: 'translate',
       name: 'AI 润色与翻译',
-      shortcut: 'Alt + T',
-      tagline: '中英互译、公文润色与学术改写',
+      shortcut: '应用内',
+      tagline: '多语言互译、公文润色与学术改写',
       badge: '智能助手',
-      imageSrc: `${import.meta.env.BASE_URL}screenshots/translate.png`,
+      imageSrc: '/screenshots/translate.png',
       color: 'border-indigo-400 ring-indigo-500/15',
       accentBg: 'bg-indigo-50 text-indigo-700 border-indigo-200',
       icon: Languages,
-      highlights: ['中英即时互译', '商务公文润色', '光标一键回填'],
+      highlights: ['多语言即时互译', '商务公文润色', '光标一键回填'],
       description: '多模式智能辅助，快速读取选中文本，AI 一键精修润色。'
     },
     {
       id: 'screenshot',
       name: '快捷截图板',
-      shortcut: 'Alt + S',
+      shortcut: 'F4',
       tagline: '区域截屏、图库归档与离线 OCR',
       badge: '离线 OCR',
-      imageSrc: `${import.meta.env.BASE_URL}screenshots/screenshot.png`,
+      imageSrc: '/screenshots/screenshot.png',
       color: 'border-emerald-400 ring-emerald-500/15',
       accentBg: 'bg-emerald-50 text-emerald-700 border-emerald-200',
       icon: Crop,
-      highlights: ['像素级选区截图', '离线识字搜图', '尺寸智能归类'],
-      description: '随手截屏自动归档至图库，离线 OCR 引擎无需联网搜图中文字。'
+      highlights: ['像素级选区截图', '离线 OCR 识字', '尺寸智能归类'],
+      description: '随手截屏自动归档至图库，可在本机识别文字并搜索、复制 OCR 结果。'
     },
     {
       id: 'notes',
       name: '闪念笔记 / 待办',
-      shortcut: 'Alt + N',
+      shortcut: '应用内',
       tagline: '随手灵感速记、任务清单与彩色分类',
       badge: '轻量待办',
-      imageSrc: `${import.meta.env.BASE_URL}screenshots/notes.png`,
+      imageSrc: '/screenshots/notes.png',
       color: 'border-amber-400 ring-amber-500/15',
       accentBg: 'bg-amber-50 text-amber-700 border-amber-200',
       icon: CheckSquare,
-      highlights: ['快捷键随手记', '任务打勾完成', '彩色便签管理'],
+      highlights: ['快速记录', '任务打勾完成', '彩色便签管理'],
       description: '轻量灵感便签，随手记录突发奇想与当日任务，清晰直观。'
     }
   ];
 
   return (
     <section id="features" className="py-12 sm:py-16 max-w-6xl mx-auto px-4 sm:px-6">
-      
+
       {/* 标题说明 */}
       <div className="text-center max-w-2xl mx-auto mb-10">
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs font-bold mb-3 shadow-2xs">
@@ -101,7 +101,7 @@ export const RealAppShowcase: React.FC = () => {
           4 大核心功能，鼠标悬停即刻放大
         </h2>
         <p className="text-sm sm:text-base text-slate-600 font-medium leading-relaxed">
-          纯正 Windows 11 原生设计，一排直观浏览，鼠标移到哪个功能哪个就放大查看实机细节。
+          面向 Windows 10 / 11 设计，一排直观浏览，鼠标移到哪个功能即可查看实机细节。
         </p>
       </div>
 
@@ -157,7 +157,7 @@ export const RealAppShowcase: React.FC = () => {
 
               {/* 真实的实际截图展示区域 */}
               <div className="relative rounded-2xl overflow-hidden bg-[#1a1d24] border border-slate-800 shadow-inner flex-1 flex flex-col items-center justify-start p-1.5 group/img">
-                
+
                 {/* 截图图片 (使用用户提供的真实软件截图) */}
                 <img
                   src={f.imageSrc}
@@ -191,7 +191,7 @@ export const RealAppShowcase: React.FC = () => {
               {/* 底部极简说明 */}
               <div className="mt-3 pt-2.5 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400 font-medium">
                 <span>实机真实截图</span>
-                <span className="text-emerald-600 font-bold">100% 本地运行</span>
+                <span className="text-emerald-600 font-bold">本地优先</span>
               </div>
 
             </div>
@@ -207,7 +207,7 @@ export const RealAppShowcase: React.FC = () => {
           </div>
           <div>
             <h4 className="text-sm font-bold text-slate-900">真正属于您的个人效率助手</h4>
-            <p className="text-xs text-slate-500">所有界面功能完全运行在 Windows 本地，无需联网也能毫秒级调取。</p>
+            <p className="text-xs text-slate-500">剪贴板、截图与笔记等本地功能无需联网即可使用；AI 功能按你的配置运行。</p>
           </div>
         </div>
 
@@ -219,11 +219,11 @@ export const RealAppShowcase: React.FC = () => {
 
       {/* 高清原图全屏灯箱 Modal (Lightbox) */}
       {zoomImage && (
-        <div 
+        <div
           className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-slate-950/80 backdrop-blur-md animate-in fade-in duration-200"
           onClick={() => setZoomImage(null)}
         >
-          <div 
+          <div
             className="bg-[#14161b] border border-slate-700 rounded-3xl max-w-md w-full p-4 sm:p-5 shadow-2xl text-slate-100 relative max-h-[92vh] flex flex-col items-center"
             onClick={(e) => e.stopPropagation()}
           >
@@ -257,7 +257,7 @@ export const RealAppShowcase: React.FC = () => {
             {/* Modal Footer */}
             <div className="w-full pt-3 mt-2 flex items-center justify-between text-xs text-slate-400 font-mono">
               <span>分辨率: 382 × 964 (Fluent 侧栏)</span>
-              <span className="text-emerald-400">100% 本地离线</span>
+              <span className="text-emerald-400">本地优先</span>
             </div>
 
           </div>

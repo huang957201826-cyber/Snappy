@@ -1,16 +1,23 @@
-import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
-import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { fileURLToPath } from 'node:url';
+import {defineConfig} from 'vite';
 
-export default defineConfig({
-  base: '/Snappy/',
-  plugins: [react(), tailwindcss()],
-  clearScreen: false,
-  server: {
-    strictPort: true,
-  },
-  build: {
-    target: 'es2022',
-    sourcemap: false,
-  },
+const projectRoot = fileURLToPath(new URL('.', import.meta.url));
+
+export default defineConfig(() => {
+  return {
+    base: process.env.VITE_BASE_PATH ?? '/Snappy/',
+    plugins: [react(), tailwindcss()],
+    resolve: {
+      alias: {
+        '@': projectRoot,
+      },
+    },
+    server: {
+      // HMR can be disabled in CI or controlled local builds.
+      hmr: process.env.DISABLE_HMR !== 'true',
+      watch: process.env.DISABLE_HMR === 'true' ? null : {},
+    },
+  };
 });
