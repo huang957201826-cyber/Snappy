@@ -5,7 +5,7 @@
 ## 本地构建
 
 ```powershell
-npm install --no-package-lock
+npm ci
 npm run build
 ```
 
