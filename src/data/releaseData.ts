@@ -22,7 +22,7 @@ export const DOWNLOAD_VERSIONS: DownloadVersion[] = [
     format: '.exe（一键快速安装）',
     description: '标准 Windows 安装程序，适合大多数 Windows 10/11 用户；安装后可从桌面快捷方式启动。',
     recommended: true,
-    sha256: '4EEA1F5C896D2E51A9023CFF98CC7301E7290B6710E509660BBFE56349FDD411',
+    sha256: '15ADD7E81EB52448DA427AA94A594412B5C01FAE4A6832FA77B28B82721B3D20',
     fileName: 'Snappy-0.2.0-Setup.exe',
     downloadUrl: `${DOWNLOAD_BASE_URL}/Snappy-0.2.0-Setup.exe`,
   },

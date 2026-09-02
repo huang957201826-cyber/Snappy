@@ -46,7 +46,7 @@ jobs:
           grep -Rq '/Snappy/screenshots/screenshot.png' dist/assets/*.js
           grep -Rq '/Snappy/screenshots/notes.png' dist/assets/*.js
           grep -Rq 'releases/download/v0.2.0' dist/assets/*.js
-          grep -Rq '4EEA1F5C896D2E51A9023CFF98CC7301E7290B6710E509660BBFE56349FDD411' dist/assets/*.js
+          grep -Rq '15ADD7E81EB52448DA427AA94A594412B5C01FAE4A6832FA77B28B82721B3D20' dist/assets/*.js
           grep -Rq '75A88E0C58A931A8E56513B4AB708DA93B1AA281A40D59102F472DC0585ECAEC' dist/assets/*.js
           if grep -Rq '正式版' dist; then echo 'Formal release wording found in build output'; exit 1; fi
           for image in clipboard translate screenshot notes; do
