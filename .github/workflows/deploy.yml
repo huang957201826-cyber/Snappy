@@ -1,4 +1,4 @@
-name: Deploy Snappy v0.2.0 Release Page to GitHub Pages
+name: Deploy Snappy v0.2.0 Internal Beta Page to GitHub Pages
 
 on:
   push:
@@ -39,10 +39,20 @@ jobs:
       - name: Verify Pages build
         shell: bash
         run: |
-          grep -Fq 'v0.2.0' dist/index.html
+          grep -Fq 'v0.2.0 内测版' dist/index.html
+          grep -Fq '/Snappy/icon.svg' dist/index.html
+          grep -Rq '/Snappy/screenshots/clipboard.png' dist/assets/*.js
+          grep -Rq '/Snappy/screenshots/translate.png' dist/assets/*.js
+          grep -Rq '/Snappy/screenshots/screenshot.png' dist/assets/*.js
+          grep -Rq '/Snappy/screenshots/notes.png' dist/assets/*.js
           grep -Rq 'releases/download/v0.2.0' dist/assets/*.js
           grep -Rq '4EEA1F5C896D2E51A9023CFF98CC7301E7290B6710E509660BBFE56349FDD411' dist/assets/*.js
           grep -Rq '75A88E0C58A931A8E56513B4AB708DA93B1AA281A40D59102F472DC0585ECAEC' dist/assets/*.js
+          if grep -Rq '正式版' dist; then echo 'Formal release wording found in build output'; exit 1; fi
+          for image in clipboard translate screenshot notes; do
+            test -f "dist/screenshots/${image}.png"
+            file "dist/screenshots/${image}.png" | grep -Fq 'PNG image data'
+          done
 
       - name: Add SPA fallback
         shell: bash

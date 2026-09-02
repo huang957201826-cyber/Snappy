@@ -1,6 +1,6 @@
-# Snappy v0.2.0 Release Page
+# Snappy v0.2.0 内测版下载页
 
-这是 Snappy v0.2.0 Windows 下载页面源码。
+这是 Snappy v0.2.0 Windows 内测版下载页面源码。
 
 ## 本地构建
 
@@ -13,7 +13,7 @@ npm run build
 
 ## 下载地址
 
-页面中的两个下载按钮指向 GitHub Releases v0.2.0 资产：
+页面中的两个下载按钮指向 GitHub Releases v0.2.0 内测版资产：
 
 - `https://github.com/huang957201826-cyber/Snappy/releases/download/v0.2.0/Snappy-0.2.0-Setup.exe`
 - `https://github.com/huang957201826-cyber/Snappy/releases/download/v0.2.0/Snappy-0.2.0-Portable.zip`

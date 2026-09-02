@@ -20,7 +20,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDownload }) => {
               <div className="flex items-center gap-2">
                 <span className="text-base font-black text-slate-900">Snappy</span>
                 <span className="px-2 py-0.5 rounded-full bg-blue-50 text-blue-700 text-[10px] font-bold border border-blue-200">
-                  v0.2.0 正式版
+                  v0.2.0 内测版
                 </span>
               </div>
               <p className="text-xs text-slate-500 mt-0.5">
@@ -58,7 +58,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenDownload }) => {
             <span>隐私保障：剪贴板、截图与笔记默认存储于本地；AI 请求按你的设置发送所选文本</span>
           </div>
           <div>
-            © 2026 Snappy Studio · v0.2.0 正式版
+            © 2026 Snappy Studio · v0.2.0 内测版
           </div>
         </div>
 

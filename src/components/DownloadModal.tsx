@@ -87,7 +87,7 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({
             <Sparkles className="w-4 h-4 text-blue-600 shrink-0" />
             <div>
               <span className="text-xs font-bold text-slate-900 block">下载前请确认版本</span>
-              <span className="text-[11px] text-slate-600 block">当前为 Windows x64 v0.2.0 正式版</span>
+              <span className="text-[11px] text-slate-600 block">当前为 Windows x64 v0.2.0 内测版</span>
             </div>
           </div>
           <a

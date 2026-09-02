@@ -17,7 +17,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDownload }) => {
           <div className="flex items-center gap-2">
             <span className="text-xl font-black tracking-tight text-slate-900">Snappy</span>
             <span className="px-2.5 py-0.5 text-[11px] font-bold rounded-full bg-blue-50 text-blue-700 border border-blue-200">
-              v0.2.0
+              v0.2.0 内测版
             </span>
           </div>
         </a>

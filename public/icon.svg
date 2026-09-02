@@ -18,7 +18,7 @@
   <rect width="512" height="512" rx="120" fill="url(#bg-grad)" />
 
   <g filter="url(#paper-shadow)">
-    <rec
+    <rect
       x="100"
       y="180"
       width="190"
@@ -29,7 +29,7 @@
       transform="rotate(-16 100 180)"
     />
 
-    <rec
+    <rect
       x="132"
       y="136"
       width="200"
@@ -41,7 +41,7 @@
     />
 
     <g filter="url(#card-shadow)">
-      <rec
+      <rect
         x="184"
         y="96"
         width="220"
@@ -50,7 +50,7 @@
         fill="#FFFFFF"
       />
 
-      <rec
+      <rect
         x="254"
         y="80"
         width="80"

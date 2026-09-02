@@ -26,7 +26,7 @@ export const HeroDownloadSection: React.FC = () => {
 
         <div className="flex items-center justify-center gap-2 mb-3.5">
           <span className="px-3.5 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold border border-blue-200">
-            Windows v0.2.0 正式版
+            Windows v0.2.0 内测版
           </span>
         </div>
 
