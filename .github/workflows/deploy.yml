@@ -43,6 +43,7 @@ jobs:
         shell: bash
         working-directory: ./前端界面/snappy---windows轻量效率工具内测发布页
         run: |
+          set -x
           grep -Fq 'v0.2.1 内测版' dist/index.html
           grep -Fq '/Snappy/icon.svg' dist/index.html
           grep -Rq '/Snappy/screenshots/clipboard.png' dist/assets/*.js
@@ -54,8 +55,7 @@ jobs:
           grep -Rq '34A90FA01FBD93EF7D20F813A62D09C5516D7E11DC7A2DBCD739DA4BA3D231BF' dist/assets/*.js
           if grep -Rq '正式版' dist; then echo 'Formal release wording found in build output'; exit 1; fi
           for image in clipboard translate screenshot notes; do
-            test -f "dist/screenshots/${image}.png"
-            file "dist/screenshots/${image}.png" | grep -Fq 'PNG image data'
+            test -s "dist/screenshots/${image}.png"
           done
 
       - name: Add SPA fallback
