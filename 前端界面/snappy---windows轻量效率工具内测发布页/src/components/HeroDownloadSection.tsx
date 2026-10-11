@@ -14,6 +14,7 @@ export const HeroDownloadSection: React.FC = () => {
   };
 
   const groupQrUrl = `${import.meta.env.BASE_URL}wechat-group-qr.png`;
+  const authorQrUrl = `${import.meta.env.BASE_URL}author-wechat-qr.jpg`;
 
   return (
     <section id="download" className="pt-10 pb-12 sm:pt-14 sm:pb-16 max-w-5xl mx-auto px-4 sm:px-6">
@@ -155,6 +156,30 @@ export const HeroDownloadSection: React.FC = () => {
             <h4 className="text-2xl font-black text-slate-900 mb-2">扫码加入 Snappy 内测交流群</h4>
             <p className="text-sm text-slate-600 leading-relaxed mb-3">下载使用中遇到问题、想反馈建议，都可以扫码进群直接留言。</p>
             <p className="text-xs text-slate-400">群二维码有效期为 7 天，请及时扫码加入。</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Author WeChat Contact */}
+      <div id="author-wechat" className="mb-12 p-6 sm:p-8 rounded-3xl bg-white border border-slate-200 shadow-sm">
+        <div className="grid grid-cols-1 sm:grid-cols-[auto_1fr] items-center gap-6 sm:gap-8 max-w-3xl mx-auto text-center sm:text-left">
+          <div className="mx-auto">
+            <img
+              src={authorQrUrl}
+              alt="Snappy 作者微信二维码"
+              className="w-44 h-44 object-contain rounded-2xl border border-slate-200 bg-white p-2"
+            />
+          </div>
+          <div>
+            <div className="inline-flex items-center gap-2 text-xs font-bold text-blue-700 bg-blue-50 border border-blue-200 rounded-full px-3 py-1 mb-3">
+              <QrCode className="w-4 h-4" />
+              作者微信
+            </div>
+            <h4 className="text-2xl font-black text-slate-900 mb-2">添加作者微信</h4>
+            <p className="text-sm text-slate-600 leading-relaxed mb-3">
+              这个是作者的二维码，欢迎有更多内测意见进行反馈，同步交流。
+            </p>
+            <p className="text-xs text-slate-400">个人微信二维码长期有效。</p>
           </div>
         </div>
       </div>
