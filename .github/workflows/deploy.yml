@@ -1,4 +1,4 @@
-name: Deploy Snappy v0.2.0 Internal Beta Page to GitHub Pages
+name: Deploy Snappy v0.2.1 Internal Beta Page to GitHub Pages
 
 on:
   push:
@@ -28,26 +28,30 @@ jobs:
           cache: npm
 
       - name: Install dependencies
+        working-directory: ./前端界面/snappy---windows轻量效率工具内测发布页
         run: npm ci
 
       - name: Lint
+        working-directory: ./前端界面/snappy---windows轻量效率工具内测发布页
         run: npm run lint
 
       - name: Build
+        working-directory: ./前端界面/snappy---windows轻量效率工具内测发布页
         run: npm run build
 
       - name: Verify Pages build
         shell: bash
+        working-directory: ./前端界面/snappy---windows轻量效率工具内测发布页
         run: |
-          grep -Fq 'v0.2.0 内测版' dist/index.html
+          grep -Fq 'v0.2.1 内测版' dist/index.html
           grep -Fq '/Snappy/icon.svg' dist/index.html
           grep -Rq '/Snappy/screenshots/clipboard.png' dist/assets/*.js
           grep -Rq '/Snappy/screenshots/translate.png' dist/assets/*.js
           grep -Rq '/Snappy/screenshots/screenshot.png' dist/assets/*.js
           grep -Rq '/Snappy/screenshots/notes.png' dist/assets/*.js
-          grep -Rq 'releases/download/v0.2.0' dist/assets/*.js
-          grep -Rq '15ADD7E81EB52448DA427AA94A594412B5C01FAE4A6832FA77B28B82721B3D20' dist/assets/*.js
-          grep -Rq '75FF36272D5CB1B254459B4FFE1E2225ECD76231E047CC253E8796171F51CE70' dist/assets/*.js
+          grep -Rq 'releases/download/v0.2.1' dist/assets/*.js
+          grep -Rq 'D6ADAE9C08240A6A5D635A6D48E5EFE151D725A9D933EFB7C80712EA972AAE6B' dist/assets/*.js
+          grep -Rq '34A90FA01FBD93EF7D20F813A62D09C5516D7E11DC7A2DBCD739DA4BA3D231BF' dist/assets/*.js
           if grep -Rq '正式版' dist; then echo 'Formal release wording found in build output'; exit 1; fi
           for image in clipboard translate screenshot notes; do
             test -f "dist/screenshots/${image}.png"
@@ -56,12 +60,13 @@ jobs:
 
       - name: Add SPA fallback
         shell: bash
+        working-directory: ./前端界面/snappy---windows轻量效率工具内测发布页
         run: cp dist/index.html dist/404.html
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: ./前端界面/snappy---windows轻量效率工具内测发布页/dist
 
   deploy:
     needs: build
