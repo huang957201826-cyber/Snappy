@@ -1,6 +1,6 @@
-# Snappy v0.2.1 内测版下载页
+# Snappy v0.2.2 内测版下载页
 
-这是 Snappy v0.2.1 Windows 内测版下载页面源码。
+这是 Snappy v0.2.2 Windows 内测版下载页面源码。
 
 ## 本地构建
 
@@ -13,10 +13,10 @@ npm run build
 
 ## 下载地址
 
-页面中的两个下载按钮指向 GitHub Releases v0.2.1 内测版资产：
+页面中的两个下载按钮指向 GitHub Releases v0.2.2 内测版资产：
 
-- `https://github.com/huang957201826-cyber/Snappy/releases/download/v0.2.1/Snappy-0.2.1-Setup.exe`
-- `https://github.com/huang957201826-cyber/Snappy/releases/download/v0.2.1/Snappy-0.2.1-Portable.zip`
+- `https://github.com/huang957201826-cyber/Snappy/releases/download/v0.2.2/Snappy-0.2.2-Setup.exe`
+- `https://github.com/huang957201826-cyber/Snappy/releases/download/v0.2.2/Snappy-0.2.2-Portable.zip`
 
 SHA256 来自本次构建的 canonical artifact manifest；下载后请与页面显示值核对。
 

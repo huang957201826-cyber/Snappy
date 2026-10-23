@@ -20,20 +20,18 @@ export const HeroDownloadSection: React.FC = () => {
     <section id="download" className="pt-10 pb-12 sm:pt-14 sm:pb-16 max-w-5xl mx-auto px-4 sm:px-6">
 
       {/* Brand Header */}
-      <div className="text-center max-w-2xl mx-auto mb-10">
+      <div className="text-center max-w-4xl mx-auto mb-10">
         <div className="inline-flex items-center justify-center mb-5 p-3 bg-white rounded-3xl shadow-md border border-slate-100 transition-transform hover:scale-105 duration-300">
           <SnappyLogo size={72} className="rounded-2xl" />
         </div>
 
         <div className="flex items-center justify-center gap-2 mb-3.5">
           <span className="px-3.5 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold border border-blue-200">
-            Windows v0.2.1 内测版
+            Windows v0.2.2 内测版
           </span>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight mb-4">
-          Snappy · Windows 轻量效率工具
-        </h1>
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight mb-4"><span className="block sm:inline">Snappy · Windows</span>{' '}<span className="block sm:inline">轻量效率工具</span></h1>
         <p className="text-base sm:text-lg text-slate-600 font-medium leading-relaxed">
           轻量、本地优先。快速访问剪贴板历史、AI 润色翻译、截图识字与灵感待办。
         </p>
