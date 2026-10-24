@@ -17,7 +17,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDownload }) => {
           <div className="flex items-center gap-2">
             <span className="text-xl font-black tracking-tight text-slate-900">Snappy</span>
             <span className="px-2.5 py-0.5 text-[11px] font-bold rounded-full bg-blue-50 text-blue-700 border border-blue-200">
-              v0.2.2 内测版
+              v0.2.3 内测版
             </span>
           </div>
         </a>
@@ -37,10 +37,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDownload }) => {
 
           <button
             onClick={onOpenDownload}
-            className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-blue-600 hover:bg-blue-700 text-white text-xs sm:text-sm font-bold shadow-md shadow-blue-500/20 transition-all transform hover:scale-105 active:scale-95 cursor-pointer"
+            type="button"
+            aria-label="下载 Snappy v0.2.3"
+            title="下载 Snappy v0.2.3"
+            className="flex h-10 w-11 items-center justify-center gap-2 rounded-full bg-blue-600 px-0 text-white text-xs font-bold shadow-md shadow-blue-500/20 transition-all transform hover:scale-105 hover:bg-blue-700 active:scale-95 cursor-pointer sm:h-auto sm:w-auto sm:px-5 sm:py-2.5 sm:text-sm"
           >
             <Download className="w-4 h-4" />
-            <span>免费下载</span>
+            <span className="hidden sm:inline">免费下载</span>
           </button>
         </div>
 
