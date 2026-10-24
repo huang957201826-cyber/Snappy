@@ -28,20 +28,16 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        working-directory: ./前端界面/snappy---windows轻量效率工具内测发布页
         run: npm ci
 
       - name: Lint
-        working-directory: ./前端界面/snappy---windows轻量效率工具内测发布页
         run: npm run lint
 
       - name: Build
-        working-directory: ./前端界面/snappy---windows轻量效率工具内测发布页
         run: npm run build
 
       - name: Verify Pages build
         shell: bash
-        working-directory: ./前端界面/snappy---windows轻量效率工具内测发布页
         run: |
           set -x
           grep -Fq 'v0.2.3 内测版' dist/index.html
@@ -79,13 +75,12 @@ jobs:
 
       - name: Add SPA fallback
         shell: bash
-        working-directory: ./前端界面/snappy---windows轻量效率工具内测发布页
         run: cp dist/index.html dist/404.html
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./前端界面/snappy---windows轻量效率工具内测发布页/dist
+          path: ./dist
 
   deploy:
     needs: build
