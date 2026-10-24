@@ -27,11 +27,14 @@ export const HeroDownloadSection: React.FC = () => {
 
         <div className="flex items-center justify-center gap-2 mb-3.5">
           <span className="px-3.5 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-bold border border-blue-200">
-            Windows v0.2.2 内测版
+            Windows v0.2.3 内测版
           </span>
         </div>
 
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight mb-4"><span className="block sm:inline">Snappy · Windows</span>{' '}<span className="block sm:inline">轻量效率工具</span></h1>
+        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight mb-4">
+          <span className="block sm:inline">Snappy · Windows</span>{' '}
+          <span className="block sm:inline">轻量效率工具</span>
+        </h1>
         <p className="text-base sm:text-lg text-slate-600 font-medium leading-relaxed">
           轻量、本地优先。快速访问剪贴板历史、AI 润色翻译、截图识字与灵感待办。
         </p>
@@ -130,6 +133,9 @@ export const HeroDownloadSection: React.FC = () => {
                     <span>{copiedShaId === v.id ? '已复制' : '复制哈希'}</span>
                   </button>
                 </div>
+                <p className="mt-3 text-[11px] leading-relaxed text-amber-700">
+                  未签名内测构建，Windows 可能提示“未知发布者”；安装前请核对 SHA-256。
+                </p>
               </div>
             </div>
           );
