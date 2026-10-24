@@ -79,6 +79,9 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({
               <span>{copiedSha ? '已复制' : '复制哈希'}</span>
             </button>
           </div>
+          <p className="mt-3 text-[11px] leading-relaxed text-amber-700">
+            这是未签名的内测构建，可能出现“未知发布者”或 SmartScreen 提示。请先核对 SHA-256。
+          </p>
         </div>
 
         {/* Release notes / feedback */}
@@ -87,11 +90,11 @@ export const DownloadModal: React.FC<DownloadModalProps> = ({
             <Sparkles className="w-4 h-4 text-blue-600 shrink-0" />
             <div>
               <span className="text-xs font-bold text-slate-900 block">下载前请确认版本</span>
-              <span className="text-[11px] text-slate-600 block">当前为 Windows x64 v0.2.2 内测版</span>
+              <span className="text-[11px] text-slate-600 block">当前为 Windows x64 v0.2.3 内测版</span>
             </div>
           </div>
           <a
-            href="https://github.com/huang957201826-cyber/Snappy/releases"
+            href="https://github.com/huang957201826-cyber/Snappy/releases/tag/v0.2.3"
             target="_blank"
             rel="noopener noreferrer"
             className="px-3.5 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-full text-xs font-bold transition-all shrink-0 shadow-xs cursor-pointer"
