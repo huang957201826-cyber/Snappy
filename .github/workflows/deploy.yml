@@ -1,4 +1,4 @@
-name: Deploy Snappy v0.2.2 Internal Beta Page to GitHub Pages
+name: Deploy Snappy v0.2.3 Internal Beta Page to GitHub Pages
 
 on:
   push:
@@ -44,15 +44,15 @@ jobs:
         working-directory: ./前端界面/snappy---windows轻量效率工具内测发布页
         run: |
           set -x
-          grep -Fq 'v0.2.2 内测版' dist/index.html
+          grep -Fq 'v0.2.3 内测版' dist/index.html
           grep -Fq '/Snappy/icon.svg' dist/index.html
           grep -Rq '/Snappy/screenshots/clipboard.png' dist/assets/*.js
           grep -Rq '/Snappy/screenshots/translate.png' dist/assets/*.js
           grep -Rq '/Snappy/screenshots/screenshot.png' dist/assets/*.js
           grep -Rq '/Snappy/screenshots/notes.png' dist/assets/*.js
-          grep -Rq 'releases/download/v0.2.2' dist/assets/*.js
-          grep -Rq '3F971EB1EA57D99F1C19963FCD2D04F0A7E0946F5F73958064BF508B592541A5' dist/assets/*.js
-          grep -Rq 'F5BE2E3B181D53EFA5E91441A90822AB7B4A905837F4C1CF59F506F4B45AB804' dist/assets/*.js
+          grep -Rq 'releases/download/v0.2.3' dist/assets/*.js
+          grep -Rq 'EF5B80CAEFDC9CC627BBD3A5D2743517D9663FC1A7DFD58155CE42C69EC60C22' dist/assets/*.js
+          grep -Rq '71710DF2D59A8DFDEA42BEC192CDF40C5BC05941F641B2A38077835122182208' dist/assets/*.js
           if grep -Rq '正式版' dist; then echo 'Formal release wording found in build output'; exit 1; fi
           for image in clipboard translate screenshot notes; do
             test -s "dist/screenshots/${image}.png"
