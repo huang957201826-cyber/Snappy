@@ -28,45 +28,53 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        working-directory: ./前端界面/snappy---windows轻量效率工具内测发布页
         run: npm ci
 
       - name: Lint
-        working-directory: ./前端界面/snappy---windows轻量效率工具内测发布页
         run: npm run lint
 
       - name: Build
-        working-directory: ./前端界面/snappy---windows轻量效率工具内测发布页
         run: npm run build
 
       - name: Verify Pages build
         shell: bash
-        working-directory: ./前端界面/snappy---windows轻量效率工具内测发布页
         run: |
           set -x
           grep -Fq 'v0.2.3 内测版' dist/index.html
           grep -Fq '/Snappy/icon.svg' dist/index.html
-          grep -Rq '/Snappy/screenshots/clipboard.png' dist/assets/*.js
-          grep -Rq '/Snappy/screenshots/translate.png' dist/assets/*.js
-          grep -Rq '/Snappy/screenshots/screenshot.png' dist/assets/*.js
-          grep -Rq '/Snappy/screenshots/notes.png' dist/assets/*.js
+          grep -Rq '/Snappy/' dist/assets/*.js
+          grep -Rq 'assets/aistudio' dist/assets/*.js
+          grep -Rq 'windows11_bloom' dist/assets/*.js
+          grep -Rq 'wechat-group-qr.png' dist/assets/*.js
+          grep -Rq 'author-wechat-qr.png' dist/assets/*.js
           grep -Rq 'releases/download/v0.2.3' dist/assets/*.js
           grep -Rq 'EF5B80CAEFDC9CC627BBD3A5D2743517D9663FC1A7DFD58155CE42C69EC60C22' dist/assets/*.js
           grep -Rq '71710DF2D59A8DFDEA42BEC192CDF40C5BC05941F641B2A38077835122182208' dist/assets/*.js
           if grep -Rq '正式版' dist; then echo 'Formal release wording found in build output'; exit 1; fi
-          for image in clipboard translate screenshot notes; do
-            test -s "dist/screenshots/${image}.png"
+          if grep -Rq 'v0.8.2\|Snappy 3.0\|仅 ~15MB\|snappy-source.zip\|snappy-dist.zip' dist; then
+            echo 'Stale AI Studio placeholder or private source archive found in build output'
+            exit 1
+          fi
+          for image in \
+            assets/aistudio/____b667716b.png \
+            assets/aistudio/___b891fb7a.png \
+            assets/aistudio/___89496dc3.png \
+            assets/aistudio/_____12234f7e.png \
+            assets/windows11_bloom.jpg \
+            assets/windows11_bloom_dark.jpg \
+            assets/wechat-group-qr.png \
+            assets/author-wechat-qr.png; do
+            test -s "dist/${image}"
           done
 
       - name: Add SPA fallback
         shell: bash
-        working-directory: ./前端界面/snappy---windows轻量效率工具内测发布页
         run: cp dist/index.html dist/404.html
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./前端界面/snappy---windows轻量效率工具内测发布页/dist
+          path: ./dist
 
   deploy:
     needs: build

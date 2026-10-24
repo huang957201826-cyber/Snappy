@@ -1,18 +1,35 @@
 @import "tailwindcss";
 
 @layer base {
+  :root {
+    --bg-main: #ffffff;
+    --bg-card: #f8fafc;
+    --card-border: rgba(0, 0, 0, 0.08);
+    --text-primary: #0f172a;
+    --text-secondary: #64748b;
+    --accent: #2563eb;
+  }
+
   html {
     scroll-behavior: smooth;
     color-scheme: light;
+    background-color: #ffffff;
+    color: #0f172a;
   }
 
-  /* Custom subtle scrollbar for sleek desktop UI */
+  body {
+    background-color: #ffffff;
+    color: #0f172a;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  /* Custom subtle clean scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #f1f5f9;
+    background: #ffffff;
   }
   ::-webkit-scrollbar-thumb {
     background: #cbd5e1;
