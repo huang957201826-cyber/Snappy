@@ -7,13 +7,12 @@ import { DownloadModal } from './components/DownloadModal';
 import { WeChatModal } from './components/WeChatModal';
 import { DownloadVersion } from './types';
 import { DOWNLOAD_VERSIONS } from './data/mockData';
-import { Download, Sparkles, ShieldCheck, Zap } from 'lucide-react';
+import { Download, ShieldCheck, Zap } from 'lucide-react';
 
 export default function App() {
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
   const [isWeChatModalOpen, setIsWeChatModalOpen] = useState(false);
   const [selectedDownloadVersion, setSelectedDownloadVersion] = useState<DownloadVersion | null>(null);
-  const [globalToast, setGlobalToast] = useState<string | null>(null);
 
   const installer = DOWNLOAD_VERSIONS[0];
   const portable = DOWNLOAD_VERSIONS[1];
@@ -25,13 +24,6 @@ export default function App() {
 
   const handleCloseDownload = () => {
     setIsDownloadModalOpen(false);
-  };
-
-  const showGlobalToast = (msg: string) => {
-    setGlobalToast(msg);
-    setTimeout(() => {
-      setGlobalToast(null);
-    }, 2500);
   };
 
   const scrollToCommunity = () => {
@@ -130,10 +122,7 @@ export default function App() {
       </main>
 
       {/* ================= 微信二维码区域（真正属于您的个人效率助手） ================= */}
-      <WeChatSection
-        onShowToast={showGlobalToast}
-        onOpenDownload={() => handleOpenDownload(installer)}
-      />
+      <WeChatSection />
 
       {/* ================= 极简页脚 ================= */}
       <footer className="w-full shrink-0 bg-white py-8 px-6 text-center sm:text-left border-t border-slate-200/60">
@@ -175,16 +164,7 @@ export default function App() {
       <WeChatModal
         isOpen={isWeChatModalOpen}
         onClose={() => setIsWeChatModalOpen(false)}
-        onShowToast={showGlobalToast}
       />
-
-      {/* 全局操作提示 Toast */}
-      {globalToast && (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-slate-900 text-white px-5 py-3 rounded-full shadow-2xl text-xs font-semibold flex items-center gap-2.5 animate-in fade-in slide-in-from-bottom-2 duration-200">
-          <Sparkles className="w-4 h-4 text-sky-400 shrink-0" />
-          <span>{globalToast}</span>
-        </div>
-      )}
 
     </div>
   );

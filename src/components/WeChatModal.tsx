@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Check, Copy, MessageCircle, UserCheck, Users, X } from 'lucide-react';
+import { MessageCircle, UserCheck, Users, X } from 'lucide-react';
 
 interface WeChatModalProps {
   isOpen: boolean;
   onClose: () => void;
-  onShowToast: (message: string) => void;
 }
 
 const assetUrl = (name: string) =>
@@ -13,11 +12,8 @@ const assetUrl = (name: string) =>
 export const WeChatModal: React.FC<WeChatModalProps> = ({
   isOpen,
   onClose,
-  onShowToast,
 }) => {
   const [activeTab, setActiveTab] = useState<'group' | 'author'>('group');
-  const [copied, setCopied] = useState(false);
-  const wechatId = 'Snappy_Dev';
 
   if (!isOpen) return null;
 
@@ -25,17 +21,6 @@ export const WeChatModal: React.FC<WeChatModalProps> = ({
     activeTab === 'group'
       ? assetUrl('assets/wechat-group-qr.png')
       : assetUrl('assets/author-wechat-qr.png');
-
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(wechatId);
-      setCopied(true);
-      onShowToast(`微信号 "${wechatId}" 已复制`);
-      window.setTimeout(() => setCopied(false), 2000);
-    } catch {
-      onShowToast('复制失败，请手动选择微信号');
-    }
-  };
 
   return (
     <div
@@ -60,9 +45,13 @@ export const WeChatModal: React.FC<WeChatModalProps> = ({
           <span className="text-xs font-bold">微信联系</span>
         </div>
         <h3 className="mb-1 text-lg font-black text-slate-900">
-          {activeTab === 'group' ? '加入 Snappy 微信内测群' : '添加作者微信'}
+          {activeTab === 'group' ? '加入 Snappy 微信内测群' : '直接联系作者'}
         </h3>
-        <p className="mb-4 text-xs text-slate-500">扫码交流，或复制微信号手动添加。</p>
+        <p className="mb-4 text-xs text-slate-500">
+          {activeTab === 'group'
+            ? '扫码加入内测群，交流使用体验。'
+            : '扫码添加作者，反馈内测意见。'}
+        </p>
 
         <div className="mb-4 flex rounded-xl border border-slate-200 bg-slate-100 p-1">
           <button
@@ -87,7 +76,7 @@ export const WeChatModal: React.FC<WeChatModalProps> = ({
             }`}
           >
             <UserCheck className="h-3.5 w-3.5 text-blue-600" />
-            作者微信
+            反馈意见
           </button>
         </div>
 
@@ -101,19 +90,11 @@ export const WeChatModal: React.FC<WeChatModalProps> = ({
 
         <p className="mb-3 text-[11px] text-slate-500">使用微信扫一扫上方二维码</p>
 
-        <div className="flex items-center justify-between rounded-xl border border-slate-200 bg-slate-50 p-2.5 text-xs">
-          <div className="text-left">
-            <span className="block text-[10px] text-slate-400">微信号:</span>
-            <span className="font-mono font-bold text-slate-800">{wechatId}</span>
-          </div>
-          <button
-            type="button"
-            onClick={() => void handleCopy()}
-            className="flex items-center gap-1 rounded-lg bg-slate-900 px-3 py-1.5 text-xs font-semibold text-white transition-all hover:bg-black"
-          >
-            {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
-            <span>{copied ? '已复制' : '复制微信'}</span>
-          </button>
+        <div className="rounded-xl border border-slate-200 bg-slate-50 p-3 text-left">
+          <span className="block text-xs font-bold text-slate-800">直接联系作者</span>
+          <span className="mt-1 block text-[11px] leading-5 text-slate-500">
+            反馈问题、改进建议或内测体验。
+          </span>
         </div>
       </div>
     </div>

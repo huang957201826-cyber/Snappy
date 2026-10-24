@@ -1,29 +1,10 @@
-import React, { useState } from 'react';
-import { Check, Copy, UserCheck, Users } from 'lucide-react';
-
-interface WeChatSectionProps {
-  onShowToast: (message: string) => void;
-  onOpenDownload?: () => void;
-}
+import React from 'react';
+import { UserCheck, Users } from 'lucide-react';
 
 const assetUrl = (name: string) =>
   `${import.meta.env.BASE_URL}${name.replace(/^\/+/, '')}`;
 
-export const WeChatSection: React.FC<WeChatSectionProps> = ({ onShowToast }) => {
-  const [copiedAuthor, setCopiedAuthor] = useState(false);
-  const authorWechatId = 'Snappy_Dev';
-
-  const handleCopyAuthor = async () => {
-    try {
-      await navigator.clipboard.writeText(authorWechatId);
-      setCopiedAuthor(true);
-      onShowToast(`已复制作者微信号: ${authorWechatId}`);
-      window.setTimeout(() => setCopiedAuthor(false), 2000);
-    } catch {
-      onShowToast('复制失败，请手动选择微信号');
-    }
-  };
-
+export const WeChatSection: React.FC = () => {
   return (
     <section
       id="community"
@@ -64,7 +45,7 @@ export const WeChatSection: React.FC<WeChatSectionProps> = ({ onShowToast }) => 
             <div className="flex h-8 w-8 items-center justify-center rounded-xl border border-blue-200/80 bg-blue-50 text-blue-600">
               <UserCheck className="h-4 w-4" />
             </div>
-            <span>作者个人微信</span>
+            <span>联系作者，反馈内测意见</span>
           </div>
 
           <div className="mb-4 rounded-2xl border border-slate-200 bg-white p-3 shadow-xs">
@@ -76,23 +57,9 @@ export const WeChatSection: React.FC<WeChatSectionProps> = ({ onShowToast }) => 
             />
           </div>
 
-          <div className="flex items-center gap-2">
-            <span className="font-mono text-xs text-slate-600">
-              微信号: <span className="font-bold text-slate-900">{authorWechatId}</span>
-            </span>
-            <button
-              type="button"
-              onClick={() => void handleCopyAuthor()}
-              className="flex items-center gap-1 rounded-lg bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-800 transition-all hover:bg-slate-200"
-            >
-              {copiedAuthor ? (
-                <Check className="h-3 w-3 text-emerald-600" />
-              ) : (
-                <Copy className="h-3 w-3" />
-              )}
-              <span>{copiedAuthor ? '已复制' : '复制'}</span>
-            </button>
-          </div>
+          <p className="text-xs leading-5 text-slate-500">
+            扫码添加作者，直接反馈内测意见
+          </p>
         </div>
       </div>
     </section>
