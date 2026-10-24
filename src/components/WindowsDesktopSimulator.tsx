@@ -460,7 +460,7 @@ export const WindowsDesktopSimulator: React.FC = () => {
             {/* 右侧系统托盘 */}
             <div className="flex items-center gap-3 text-xs text-slate-400 font-mono">
               <span className="hidden sm:inline text-[10px] text-emerald-400 bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-800/40">
-                主进程约 25MB
+                主进程约 28MB
               </span>
               <div className="flex flex-col items-end text-[11px] leading-tight text-slate-300">
                 <span>16:20</span>

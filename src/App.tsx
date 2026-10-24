@@ -70,7 +70,7 @@ export default function App() {
 
         {/* 极简副标题 */}
         <p className="text-base sm:text-lg lg:text-xl text-slate-600 max-w-2xl mx-auto mb-10 sm:mb-14 leading-relaxed font-normal">
-          剪贴板、截图、笔记与 AI 润色四合一。主进程私有内存约 25MB，
+          剪贴板、截图、笔记与 AI 润色四合一。主进程私有内存约 28MB，
           WebView2 运行时另计；本地功能离线可用，Alt + 空格一键唤出。
         </p>
 
@@ -118,7 +118,7 @@ export default function App() {
           <span className="text-slate-300">·</span>
           <span className="flex items-center gap-1">
             <Zap className="w-3 h-3 text-amber-500" />
-            主进程约 25MB
+            主进程约 28MB
           </span>
           <span className="text-slate-300">·</span>
           <span>即开即用</span>
