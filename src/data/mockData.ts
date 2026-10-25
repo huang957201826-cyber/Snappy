@@ -11,7 +11,13 @@ export interface DownloadVersion {
   downloadUrl: string;
 }
 
-const RELEASE_BASE = 'https://github.com/huang957201826-cyber/Snappy/releases/download/v0.2.3';
+const GITHUB_RELEASE_BASE =
+  'https://github.com/huang957201826-cyber/Snappy/releases/download/v0.2.3';
+const BASE_URL = import.meta.env.BASE_URL;
+const IS_ROOT_DEPLOY = BASE_URL === '/';
+const DOWNLOAD_BASE = IS_ROOT_DEPLOY
+  ? `${BASE_URL}downloads/v0.2.3`
+  : GITHUB_RELEASE_BASE;
 
 export const DOWNLOAD_VERSIONS: DownloadVersion[] = [
   {
@@ -24,7 +30,7 @@ export const DOWNLOAD_VERSIONS: DownloadVersion[] = [
     recommended: true,
     sha256: 'EF5B80CAEFDC9CC627BBD3A5D2743517D9663FC1A7DFD58155CE42C69EC60C22',
     fileName: 'Snappy-0.2.3-Setup.exe',
-    downloadUrl: `${RELEASE_BASE}/Snappy-0.2.3-Setup.exe`,
+    downloadUrl: `${DOWNLOAD_BASE}/Snappy-0.2.3-Setup.exe`,
   },
   {
     id: 'win-portable',
@@ -36,6 +42,6 @@ export const DOWNLOAD_VERSIONS: DownloadVersion[] = [
     recommended: false,
     sha256: '71710DF2D59A8DFDEA42BEC192CDF40C5BC05941F641B2A38077835122182208',
     fileName: 'Snappy-0.2.3-Portable.zip',
-    downloadUrl: `${RELEASE_BASE}/Snappy-0.2.3-Portable.zip`,
+    downloadUrl: `${DOWNLOAD_BASE}/Snappy-0.2.3-Portable.zip`,
   }
 ];
