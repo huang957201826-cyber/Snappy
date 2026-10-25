@@ -8,7 +8,7 @@ export const WeChatSection: React.FC = () => {
   return (
     <section
       id="community"
-      className="relative w-full border-t border-slate-200/60 bg-slate-50/70 px-5 py-20 sm:px-10 sm:py-28"
+      className="relative w-full scroll-mt-24 bg-transparent px-5 py-20 sm:px-10 sm:py-28"
     >
       <div className="mx-auto mb-12 max-w-3xl text-center sm:mb-16">
         <h2 className="mb-4 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-4xl">

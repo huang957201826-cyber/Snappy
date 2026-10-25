@@ -3,11 +3,16 @@ import { Download, Users } from 'lucide-react';
 import { SnappyLogo } from './SnappyLogo';
 
 interface NavbarProps {
-  onOpenDownload: () => void;
+  downloadUrl: string;
+  downloadFileName: string;
   onOpenWeChat: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenDownload, onOpenWeChat }) => {
+export const Navbar: React.FC<NavbarProps> = ({
+  downloadUrl,
+  downloadFileName,
+  onOpenWeChat,
+}) => {
   return (
     <header className="w-full z-40 sticky top-0 bg-white/70 backdrop-blur-xl border-b border-slate-200/60 shrink-0 transition-colors">
       <div className="max-w-[1400px] mx-auto px-4 sm:px-10 h-16 flex items-center justify-between gap-3">
@@ -23,6 +28,12 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDownload, onOpenWeChat }) 
           </div>
         </div>
 
+        <nav className="hidden items-center gap-6 text-xs font-semibold text-slate-600 md:flex">
+          <a href="#features" className="transition-colors hover:text-slate-900">功能预览</a>
+          <a href="#download-info" className="transition-colors hover:text-slate-900">安装与校验</a>
+          <a href="#community" className="transition-colors hover:text-slate-900">内测交流</a>
+        </nav>
+
         {/* Top Actions */}
         <div className="flex shrink-0 items-center gap-2">
           <button
@@ -36,16 +47,16 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenDownload, onOpenWeChat }) 
             <span className="hidden sm:inline">微信内测群</span>
           </button>
 
-          <button
-            type="button"
-            onClick={onOpenDownload}
+          <a
+            href={downloadUrl}
+            download={downloadFileName}
             aria-label="免费下载 Snappy v0.2.3"
             title="免费下载"
             className="flex h-10 w-10 items-center justify-center gap-2 rounded-xl bg-slate-900 px-0 text-xs font-semibold text-white shadow-md shadow-slate-900/10 transition-all hover:-translate-y-0.5 hover:bg-black hover:shadow-slate-900/20 active:translate-y-0 sm:h-auto sm:w-auto sm:px-4 sm:py-2"
           >
             <Download className="w-3.5 h-3.5" />
             <span className="hidden sm:inline">免费下载</span>
-          </button>
+          </a>
         </div>
 
       </div>

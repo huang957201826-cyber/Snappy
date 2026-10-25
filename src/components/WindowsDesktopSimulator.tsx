@@ -168,10 +168,11 @@ export const WindowsDesktopSimulator: React.FC = () => {
 
   return (
     <section
+      id="features"
       ref={sectionRef}
       tabIndex={0}
       onMouseDown={() => sectionRef.current?.focus()}
-      className="w-full my-8 sm:my-14 text-left outline-none"
+      className="w-full my-8 sm:my-14 text-left outline-none scroll-mt-24"
       aria-label="Snappy Windows 桌面交互模拟器"
     >
 

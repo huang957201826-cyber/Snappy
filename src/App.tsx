@@ -1,37 +1,18 @@
 import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { BreathingDotCanvas } from './components/BreathingDotCanvas';
+import { DownloadInfo } from './components/DownloadInfo';
 import { WindowsDesktopSimulator } from './components/WindowsDesktopSimulator';
 import { WeChatSection } from './components/WeChatSection';
-import { DownloadModal } from './components/DownloadModal';
 import { WeChatModal } from './components/WeChatModal';
-import { DownloadVersion } from './types';
 import { DOWNLOAD_VERSIONS } from './data/mockData';
 import { Download, ShieldCheck, Zap } from 'lucide-react';
 
 export default function App() {
-  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
   const [isWeChatModalOpen, setIsWeChatModalOpen] = useState(false);
-  const [selectedDownloadVersion, setSelectedDownloadVersion] = useState<DownloadVersion | null>(null);
 
   const installer = DOWNLOAD_VERSIONS[0];
   const portable = DOWNLOAD_VERSIONS[1];
-
-  const handleOpenDownload = (version?: DownloadVersion) => {
-    setSelectedDownloadVersion(version || installer);
-    setIsDownloadModalOpen(true);
-  };
-
-  const handleCloseDownload = () => {
-    setIsDownloadModalOpen(false);
-  };
-
-  const scrollToCommunity = () => {
-    const el = document.getElementById('community');
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
     <div className="min-h-screen bg-white text-slate-900 flex flex-col justify-between selection:bg-blue-600 selection:text-white font-sans antialiased overflow-x-hidden relative">
@@ -41,7 +22,8 @@ export default function App() {
 
       {/* 顶部通透导航栏 */}
       <Navbar
-        onOpenDownload={() => handleOpenDownload(installer)}
+        downloadUrl={installer.downloadUrl}
+        downloadFileName={installer.fileName}
         onOpenWeChat={() => setIsWeChatModalOpen(true)}
       />
 
@@ -67,11 +49,12 @@ export default function App() {
         </p>
 
         {/* 软件下载核心行动区：增加留白与呼吸感，仅保留纯粹的双下载入口 */}
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-6 my-4 sm:my-6 mb-12 sm:mb-16 w-full sm:w-auto">
+        <div id="download" className="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-6 my-4 sm:my-6 mb-12 sm:mb-16 w-full sm:w-auto scroll-mt-24">
 
           {/* 主下载按钮：更大、更有厚重感与尊贵感 */}
-          <button
-            onClick={() => handleOpenDownload(installer)}
+          <a
+            href={installer.downloadUrl}
+            download={installer.fileName}
             className="group relative flex w-full cursor-pointer items-center justify-center gap-3 overflow-hidden rounded-2xl bg-slate-900 px-5 py-5 font-bold text-white shadow-xl shadow-slate-900/15 transition-all duration-200 hover:-translate-y-1 hover:bg-black hover:shadow-2xl hover:shadow-slate-900/25 active:translate-y-0 sm:w-auto sm:gap-4 sm:px-12"
           >
             <svg className="w-6 h-6 fill-current shrink-0 text-white" viewBox="0 0 88 88">
@@ -83,11 +66,12 @@ export default function App() {
                 {installer.fileName} · {installer.fileSize}
               </div>
             </div>
-          </button>
+          </a>
 
           {/* 免安装便携版：增大尺寸与内边距，保持同高度 */}
-          <button
-            onClick={() => handleOpenDownload(portable)}
+          <a
+            href={portable.downloadUrl}
+            download={portable.fileName}
             className="flex w-full cursor-pointer items-center justify-center gap-3 rounded-2xl border border-slate-200/90 bg-white px-5 py-5 text-sm font-semibold text-slate-800 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-50 hover:text-slate-900 hover:shadow-md active:translate-y-0 sm:w-auto sm:px-10 sm:text-base"
           >
             <Download className="w-5 h-5 text-blue-600 shrink-0" />
@@ -95,7 +79,7 @@ export default function App() {
               <div className="font-bold leading-tight">免安装便携版</div>
               <div className="text-xs font-normal text-slate-500 font-mono mt-0.5">.zip 绿色压缩包</div>
             </div>
-          </button>
+          </a>
 
         </div>
 
@@ -116,6 +100,8 @@ export default function App() {
           <span>即开即用</span>
         </div>
 
+        <DownloadInfo />
+
         {/* ================= 模拟真实 Windows 桌面工作区交互 ================= */}
         <WindowsDesktopSimulator />
 
@@ -124,41 +110,31 @@ export default function App() {
       {/* ================= 微信二维码区域（真正属于您的个人效率助手） ================= */}
       <WeChatSection />
 
-      {/* ================= 极简页脚 ================= */}
-      <footer className="w-full shrink-0 bg-white py-8 px-6 text-center sm:text-left border-t border-slate-200/60">
-        <div className="max-w-[1400px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
-          <div>
+      {/* ================= 页面收尾 ================= */}
+      <footer className="relative z-10 w-full shrink-0 bg-slate-900 text-white">
+        <div className="mx-auto flex min-h-16 max-w-[1400px] flex-col items-center justify-between gap-3 px-4 py-4 text-center sm:min-h-20 sm:flex-row sm:px-10 sm:text-left">
+          <p className="text-[11px] leading-5 text-slate-400">
             Snappy v0.2.3 · Windows 轻量效率工具 · 本地优先
-          </div>
-          <div className="flex items-center gap-6">
-            <button
-              onClick={() => handleOpenDownload(installer)}
-              className="hover:text-slate-900 transition-colors cursor-pointer"
+          </p>
+          <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[11px] font-semibold text-slate-300">
+            <a
+              href={installer.downloadUrl}
+              download={installer.fileName}
+              className="transition-colors hover:text-white"
             >
-              下载客户端
-            </button>
+              下载安装包
+            </a>
             <button
-              onClick={scrollToCommunity}
-              className="text-emerald-700 hover:text-emerald-800 transition-colors cursor-pointer font-medium"
-            >
-              微信交流群
-            </button>
-            <button
+              type="button"
               onClick={() => setIsWeChatModalOpen(true)}
-              className="hover:text-slate-900 transition-colors cursor-pointer"
+              className="cursor-pointer transition-colors hover:text-white"
             >
-              联系作者
+              反馈意见
             </button>
-          </div>
+            <a href="#download" className="transition-colors hover:text-white">返回顶部</a>
+          </nav>
         </div>
       </footer>
-
-      {/* 下载弹窗 */}
-      <DownloadModal
-        isOpen={isDownloadModalOpen}
-        onClose={handleCloseDownload}
-        selectedVersion={selectedDownloadVersion}
-      />
 
       {/* 微信二维码弹窗 */}
       <WeChatModal

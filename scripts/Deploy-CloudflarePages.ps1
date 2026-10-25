@@ -10,6 +10,7 @@ param(
 $ErrorActionPreference = 'Stop'
 $siteRoot = Split-Path -Parent $PSScriptRoot
 $manifestPath = Join-Path $ArtifactDir 'artifact-manifest.json'
+$wranglerVersion = '4.152.0'
 
 if (-not (Test-Path -LiteralPath $manifestPath)) {
     throw "Canonical manifest not found: $manifestPath"
@@ -62,18 +63,18 @@ try {
         Copy-Item -LiteralPath (Join-Path $ArtifactDir $fileName) -Destination (Join-Path $downloadDir $fileName) -Force
     }
 
-    & npx.cmd --yes wrangler@latest whoami | Out-Null
-    if ($LASTEXITCODE -ne 0) {
-        & npx.cmd --yes wrangler@latest login --scopes pages:write --scopes account:read --scopes user:read
+    $whoamiOutput = (& npx.cmd --yes "wrangler@$wranglerVersion" whoami 2>&1 | Out-String)
+    if ($LASTEXITCODE -ne 0 -or $whoamiOutput -match 'not authenticated') {
+        & npx.cmd --yes "wrangler@$wranglerVersion" login --scopes pages:write --scopes account:read --scopes user:read
         if ($LASTEXITCODE -ne 0) { throw 'Wrangler login failed' }
     }
 
-    & npx.cmd --yes wrangler@latest pages deploy dist --project-name $ProjectName --branch main --commit-dirty=true
+    & npx.cmd --yes "wrangler@$wranglerVersion" pages deploy dist --project-name $ProjectName --branch main --commit-dirty=true
     if ($LASTEXITCODE -ne 0) { throw 'Cloudflare Pages deployment failed' }
 }
 finally {
     if (-not $KeepLogin) {
-        & npx.cmd --yes wrangler@latest logout | Out-Null
+        & npx.cmd --yes "wrangler@$wranglerVersion" logout | Out-Null
     }
 
     Remove-Item Env:VITE_BASE_PATH -ErrorAction SilentlyContinue
