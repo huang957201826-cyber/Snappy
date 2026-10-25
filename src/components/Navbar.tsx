@@ -30,7 +30,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         <nav className="hidden items-center gap-6 text-xs font-semibold text-slate-600 md:flex">
           <a href="#features" className="transition-colors hover:text-slate-900">功能预览</a>
-          <a href="#download-info" className="transition-colors hover:text-slate-900">安装与校验</a>
           <a href="#community" className="transition-colors hover:text-slate-900">内测交流</a>
         </nav>
 

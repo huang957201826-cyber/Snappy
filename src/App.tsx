@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { BreathingDotCanvas } from './components/BreathingDotCanvas';
-import { DownloadInfo } from './components/DownloadInfo';
 import { WindowsDesktopSimulator } from './components/WindowsDesktopSimulator';
 import { WeChatSection } from './components/WeChatSection';
 import { WeChatModal } from './components/WeChatModal';
@@ -99,8 +98,6 @@ export default function App() {
           <span className="text-slate-300">·</span>
           <span>即开即用</span>
         </div>
-
-        <DownloadInfo />
 
         {/* ================= 模拟真实 Windows 桌面工作区交互 ================= */}
         <WindowsDesktopSimulator />
